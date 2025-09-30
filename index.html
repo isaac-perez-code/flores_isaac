@@ -1,85 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img_port.jpeg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>FLORES</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="img_port.jpeg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="img/flowers.png" type="image/x-icon" />
+  <title>FLORES</title>
+  <style>
+    /* Oculta el reproductor de audio */
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-<audio autoplay muted>
-  <source src="Noel Schajris - No Veo La Hora.mp3" type="audio/mp3">
-  Tu navegador no soporta el elemento de audio.
-</audio>
 
+  <audio id="miAudio" autoplay>
+    <source src="Noel Schajris - No Veo La Hora.mp3" type="audio/mp3" />
+    Tu navegador no soporta el elemento de audio.
+  </audio>
 
-  <!-- Tu script principal, si lo tienes -->
-  <script src="main.js"></script>
-
-  <!-- Script para intentar reproducir audio automáticamente desde el segundo 5 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('miAudio');
-      // Esperar a que el audio esté listo para reproducir
-      audio.addEventListener('canplaythrough', () => {
-        try {
-          audio.currentTime = 5;
-        } catch (e) {
-          console.warn('No se pudo ajustar el currentTime:', e);
-        }
-        // Intento de reproducción
-        audio.play().catch((err) => {
-          console.warn('Autoplay falló:', err);
-          // **Fallback**: si falla el autoplay automático, podemos escuchar al primer click
-          document.body.addEventListener('click', () => {
-            audio.play().catch(e => console.warn('Reproducción después del clic falló:', e));
-          }, { once: true });
-        });
+
+      audio.play().catch((err) => {
+        console.warn('Autoplay falló:', err);
+        // Si falla el autoplay, espera al primer click para reproducir
+        document.body.addEventListener('click', () => {
+          audio.play().catch(e => console.warn('Reproducción después del clic falló:', e));
+        }, { once: true });
       });
     });
   </script>
-    <div class="greetings">
-        <span>T</span>
-        <span>E</span>
-        <span>A</span>
-        <span>M</span>
-        <span>O</span>
-        <span>M</span>
-        <span>U</span>
-        <span>C</span>
-        <span>H</span>
-        <span>O</span>
-    </div>
-    
-    <div class="greetings">
-        <span>Y</span>
-        <span>A</span>
-        <span>M</span>
-        <span>I</span>
-    </div>
-    
-    <div class="description">
-        <span>Tengo un regalo especial para ti!!</span>
-    </div>
-    <div class="description">
-        <span>I'm so sorry, I hope to win your forgiveness.</span>
-    </div>
-    <div class="description">
-        <span>Con mucho cariño para ti <3</span>
-    <div class="button">
-        <button>
-            <a href='flores.html'>Haga Clic</a>
-        </button>
-        
-    </div>
+
+  <div class="greetings">
+    <span>T</span><span>E</span><span>A</span><span>M</span><span>O</span><span>M</span><span>U</span><span>C</span><span>H</span><span>O</span>
+  </div>
+
+  <div class="greetings">
+    <span>Y</span><span>A</span><span>M</span><span>I</span>
+  </div>
+
+  <div class="description">
+    <span>Tengo un regalo especial para ti!!</span>
+  </div>
+
+  <div class="description">
+    <span>I'm so sorry, I hope to win your forgiveness.</span>
+  </div>
+
+  <div class="description">
+    <span>Con mucho cariño para ti &lt;3</span>
+  </div>
+
+  <div class="button">
+    <button>
+      <a href="flores.html">Haga Clic</a>
+    </button>
+  </div>
+
 </body>
-
 </html>
-
-
-
-
-
