@@ -171,50 +171,50 @@
 
     /* ======= NUEVAS FUNCIONES ======= */
 
-  /* Pétalos y corazones que caen */
-  .petalos-container, .corazones-container {
-    pointer-events: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 0;
-  }
+    /* Pétalos y corazones que caen */
+    .petalos-container, .corazones-container {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 0;
+    }
 
-  .petalo, .corazon-cae {
-    position: absolute;
-    opacity: 0.9;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-
-  .petalo {
-    width: 25px;
-    height: 25px;
-    background: url('https://i.imgur.com/k4vD5Kw.png') no-repeat center center;
-    background-size: contain;
-    animation-name: caer;
-  }
-
-  .corazon-cae {
-    width: 20px;
-    height: 20px;
-    background: url('https://i.imgur.com/RGq9aYk.png') no-repeat center center;
-    background-size: contain;
-    animation-name: caer;
-  }
-
-  @keyframes caer {
-    0% {
-      transform: translateY(-40px) rotate(0deg);
+    .petalo, .corazon-cae {
+      position: absolute;
       opacity: 0.9;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
-    100% {
-      transform: translateY(110vh) rotate(360deg);
-      opacity: 0;
+
+    .petalo {
+      width: 25px;
+      height: 25px;
+      background: url('https://i.imgur.com/k4vD5Kw.png') no-repeat center center;
+      background-size: contain;
+      animation-name: caer;
     }
-  }
+
+    .corazon-cae {
+      width: 20px;
+      height: 20px;
+      background: url('https://i.imgur.com/RGq9aYk.png') no-repeat center center;
+      background-size: contain;
+      animation-name: caer;
+    }
+
+    @keyframes caer {
+      0% {
+        transform: translateY(-40px) rotate(0deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
 
     /* Nombres juntos animados */
     .nombres {
@@ -286,6 +286,178 @@
       100% { transform: translateY(-12px); }
     }
 
+    /* ===== NUEVAS FUNCIONALIDADES ===== */
+    
+    /* Contador de tiempo juntos */
+    .contador-tiempo {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      padding: 15px 25px;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(219, 112, 147, 0.3);
+      font-size: 1.1rem;
+      color: #b34a6b;
+      font-weight: 600;
+    }
+    
+    .contador-tiempo span {
+      color: #d6336c;
+      font-weight: bold;
+    }
+    
+    /* Botón secreto de sorpresa */
+    .btn-secreto {
+      margin-top: 20px;
+      background: transparent;
+      border: 2px dashed #d6336c;
+      color: #d6336c;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .btn-secreto:hover {
+      background: rgba(214, 51, 108, 0.1);
+    }
+    
+    /* Galería de fotos */
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      max-width: 500px;
+    }
+    
+    .foto {
+      width: 120px;
+      height: 120px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 3px solid #d6336c;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .foto:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Modal para fotos */
+    .modal-foto {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal-foto.mostrar {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-foto img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-cerrar-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Efecto de confeti */
+    .confeti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0.7;
+      z-index: 1000;
+      animation: caerConfeti 5s linear forwards;
+    }
+    
+    @keyframes caerConfeti {
+      0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Botón de música */
+    .btn-musica {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 2px solid #d6336c;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-musica svg {
+      width: 24px;
+      height: 24px;
+      fill: #d6336c;
+    }
+    
+    /* Mensaje flotante */
+    .mensaje-flotante {
+      position: fixed;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #d6336c;
+      border-radius: 15px;
+      padding: 15px;
+      max-width: 250px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .mensaje-flotante.mostrar {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -295,11 +467,21 @@
   <div class="message-box">"Tu sonrisa es el sol que ilumina mis días más grises."</div>
   <div class="message-box">"Amarte es el regalo más dulce y sincero que la vida me ha dado."</div>
 
+  <!-- Contador de tiempo juntos -->
+  <div class="contador-tiempo">
+    Llevamos juntos: <span id="tiempoJuntos">0 días, 0 horas, 0 minutos</span>
+  </div>
+
   <div>
     <button class="btn" id="btnRegresar"><a href="index.html">Regresar</a></button>
     <button class="btn" id="btnAbrirCarta">Abre mi corazón
       <svg class="corazon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     </button>
+  </div>
+
+  <!-- Galería de fotos -->
+  <div class="galeria" id="galeriaFotos">
+    <!-- Las fotos se agregarán dinámicamente con JavaScript -->
   </div>
 
   <!-- Nombres animados -->
@@ -312,11 +494,22 @@
     <div class="msg"><span class="sticker">💌</span> Mi amor por ti crece con cada latido del corazón.</div>
   </div>
 
-  <audio id="miAudio" autoplay>
+  <!-- Botón secreto -->
+  <button class="btn-secreto" id="btnSecreto">✨ Haz clic para una sorpresa ✨</button>
+
+  <!-- Botón de música -->
+  <div class="btn-musica" id="btnMusica">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+  </div>
+
+  <audio id="miAudio" autoplay loop>
     <source src="Noel Schajris - No Veo La Hora.mp3" type="audio/mp3" />
     Tu navegador no soporta el elemento de audio.
   </audio>
 
+  <!-- Carta emergente -->
   <div class="carta" id="cartaMensaje" aria-hidden="true">
     <h2>Mi corazón abierto para ti</h2>
     <p id="line1"></p>
@@ -327,17 +520,42 @@
     <button class="btn-cerrar" id="btnCerrarCarta">Cerrar</button>
   </div>
 
+  <!-- Modal para fotos -->
+  <div class="modal-foto" id="modalFoto">
+    <button class="btn-cerrar-modal" id="btnCerrarModal">×</button>
+    <img id="fotoAmpliada" src="" alt="Foto ampliada">
+  </div>
+
+  <!-- Mensaje flotante -->
+  <div class="mensaje-flotante" id="mensajeFlotante"></div>
+
   <!-- Contenedor pétalos -->
   <div class="petalos-container" aria-hidden="true"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('miAudio');
+      const btnMusica = document.getElementById('btnMusica');
+      let audioReproduciendo = true;
+      
+      // Reproducir audio
       audio.play().catch(err => {
         console.warn('Autoplay falló:', err);
         document.body.addEventListener('click', () => {
           audio.play().catch(e => console.warn('Reproducción después del clic falló:', e));
         }, { once: true });
+      });
+      
+      // Control de música
+      btnMusica.addEventListener('click', () => {
+        if (audioReproduciendo) {
+          audio.pause();
+          btnMusica.style.opacity = '0.5';
+        } else {
+          audio.play();
+          btnMusica.style.opacity = '1';
+        }
+        audioReproduciendo = !audioReproduciendo;
       });
 
       const btnAbrirCarta = document.getElementById('btnAbrirCarta');
@@ -426,6 +644,118 @@
       // Crear pétalos cada 500ms
       setInterval(crearPetalo, 500);
 
+      // ===== NUEVAS FUNCIONALIDADES =====
+      
+      // Contador de tiempo juntos
+      const tiempoJuntos = document.getElementById('tiempoJuntos');
+      const fechaInicio = new Date('2023-01-01'); // Cambia esta fecha por la real
+      
+      function actualizarContador() {
+        const ahora = new Date();
+        const diferencia = ahora - fechaInicio;
+        
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        
+        tiempoJuntos.textContent = `${dias} días, ${horas} horas, ${minutos} minutos`;
+      }
+      
+      // Actualizar contador cada minuto
+      actualizarContador();
+      setInterval(actualizarContador, 60000);
+      
+      // Galería de fotos
+      const galeriaFotos = document.getElementById('galeriaFotos');
+      const modalFoto = document.getElementById('modalFoto');
+      const fotoAmpliada = document.getElementById('fotoAmpliada');
+      const btnCerrarModal = document.getElementById('btnCerrarModal');
+      
+      // URLs de ejemplo para las fotos (reemplaza con tus propias imágenes)
+      const fotos = [
+        'img_port.jpeg',
+        '2.jpeg',
+        '1.jpeg',
+      ];
+      
+      // Crear elementos de foto
+      fotos.forEach((foto, index) => {
+        const img = document.createElement('img');
+        img.src = foto;
+        img.alt = `Nuestra foto ${index + 1}`;
+        img.classList.add('foto');
+        img.addEventListener('click', () => {
+          fotoAmpliada.src = foto;
+          modalFoto.classList.add('mostrar');
+        });
+        galeriaFotos.appendChild(img);
+      });
+      
+      // Cerrar modal de foto
+      btnCerrarModal.addEventListener('click', () => {
+        modalFoto.classList.remove('mostrar');
+      });
+      
+      modalFoto.addEventListener('click', (e) => {
+        if (e.target === modalFoto) {
+          modalFoto.classList.remove('mostrar');
+        }
+      });
+      
+      // Botón secreto
+      const btnSecreto = document.getElementById('btnSecreto');
+      const mensajeFlotante = document.getElementById('mensajeFlotante');
+      
+      btnSecreto.addEventListener('click', () => {
+        // Crear confeti
+        crearConfeti();
+        
+        // Mostrar mensaje flotante
+        const mensajes = [
+          "¡Eres la persona más especial de mi vida!",
+          "Cada día a tu lado es un regalo",
+          "Tu sonrisa ilumina mi mundo",
+          "Te amo más de lo que las palabras pueden expresar",
+          "Eres mi sueño hecho realidad"
+        ];
+        
+        const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+        mensajeFlotante.textContent = mensajeAleatorio;
+        mensajeFlotante.classList.add('mostrar');
+        
+        // Posicionar mensaje cerca del botón
+        const rect = btnSecreto.getBoundingClientRect();
+        mensajeFlotante.style.left = `${rect.left}px`;
+        mensajeFlotante.style.top = `${rect.top - 100}px`;
+        
+        // Ocultar mensaje después de 3 segundos
+        setTimeout(() => {
+          mensajeFlotante.classList.remove('mostrar');
+        }, 3000);
+      });
+      
+      // Función para crear confeti
+      function crearConfeti() {
+        const colores = ['#ff3366', '#ff6699', '#ff9966', '#ffcc66', '#66ccff', '#9966ff'];
+        
+        for (let i = 0; i < 50; i++) {
+          const confeti = document.createElement('div');
+          confeti.classList.add('confeti');
+          confeti.style.left = Math.random() * 100 + 'vw';
+          confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+          confeti.style.width = (5 + Math.random() * 10) + 'px';
+          confeti.style.height = (5 + Math.random() * 10) + 'px';
+          confeti.style.animationDuration = (3 + Math.random() * 3) + 's';
+          confeti.style.animationDelay = (Math.random() * 2) + 's';
+          
+          document.body.appendChild(confeti);
+          
+          // Remover confeti después de la animación
+          setTimeout(() => {
+            confeti.remove();
+          }, 6000);
+        }
+      }
     });
   </script>
 </body>
