@@ -8,36 +8,30 @@
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="img/flowers.png" type="image/x-icon">
     <title>FLORES</title>
+      <style>
+    /* Oculta el reproductor de audio */
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="container">
-<audio id="miAudio" style="display:none;">
-    <source src="Noel Schajris - No Veo La Hora.mp3" type="audio/mpeg" />
+ <audio id="miAudio" autoplay>
+    <source src="Noel Schajris - No Veo La Hora.mp3" type="audio/mp3" />
     Tu navegador no soporta el elemento de audio.
   </audio>
 
-  <!-- Tu script principal, si lo tienes -->
-  <script src="main.js"></script>
-
-  <!-- Script para intentar reproducir audio automáticamente desde el segundo 5 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const audio = document.getElementById('miAudio');
-      // Esperar a que el audio esté listo para reproducir
-      audio.addEventListener('canplaythrough', () => {
-        try {
-          audio.currentTime = 5;
-        } catch (e) {
-          console.warn('No se pudo ajustar el currentTime:', e);
-        }
-        // Intento de reproducción
-        audio.play().catch((err) => {
-          console.warn('Autoplay falló:', err);
-          // **Fallback**: si falla el autoplay automático, podemos escuchar al primer click
-          document.body.addEventListener('click', () => {
-            audio.play().catch(e => console.warn('Reproducción después del clic falló:', e));
-          }, { once: true });
-        });
+
+      audio.play().catch((err) => {
+        console.warn('Autoplay falló:', err);
+        // Si falla el autoplay, espera al primer click para reproducir
+        document.body.addEventListener('click', () => {
+          audio.play().catch(e => console.warn('Reproducción después del clic falló:', e));
+        }, { once: true });
       });
     });
   </script>
@@ -371,6 +365,7 @@
   </body>
 
 </html>
+
 
 
 
